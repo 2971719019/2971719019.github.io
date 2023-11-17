@@ -261,63 +261,44 @@ function time() {
 }
 
 //链接提示文字
-$("#social")
-  .mouseover(function () {
-    $("#social").css({
+const socialLinks = [
+  { id: "#github", text: "去 Github 看看" },
+  { id: "#qq", text: "有什么事吗" },
+  { id: "#email", text: "来封 Email" },
+  { id: "#bilibili", text: "来 B 站看看 ~" },
+  { id: "#群聊", text: "你懂的 ~" },
+  { id: "#steam", text: "来与我paly~" },
+];
+
+$("#social").hover(
+  function () {
+    $(this).css({
       background: "rgb(0 0 0 / 25%)",
       "border-radius": "6px",
       "backdrop-filter": "blur(5px)",
     });
-    $("#link-text").css({
-      display: "block",
-    });
-  })
-  .mouseout(function () {
-    $("#social").css({
+    $("#link-text").css("display", "block");
+  },
+  function () {
+    $(this).css({
       background: "none",
       "border-radius": "6px",
       "backdrop-filter": "none",
     });
-    $("#link-text").css({
-      display: "none",
-    });
-  });
+    $("#link-text").css("display", "none");
+  }
+);
 
-$("#github")
-  .mouseover(function () {
-    $("#link-text").html("去 Github 看看");
-  })
-  .mouseout(function () {
-    $("#link-text").html("通过这里联系我");
-  });
-$("#qq")
-  .mouseover(function () {
-    $("#link-text").html("有什么事吗");
-  })
-  .mouseout(function () {
-    $("#link-text").html("通过这里联系我");
-  });
-$("#email")
-  .mouseover(function () {
-    $("#link-text").html("来封 Email");
-  })
-  .mouseout(function () {
-    $("#link-text").html("通过这里联系我");
-  });
-$("#bilibili")
-  .mouseover(function () {
-    $("#link-text").html("来 B 站看看 ~");
-  })
-  .mouseout(function () {
-    $("#link-text").html("通过这里联系我");
-  });
-$("#telegram")
-  .mouseover(function () {
-    $("#link-text").html("你懂的 ~");
-  })
-  .mouseout(function () {
-    $("#link-text").html("通过这里联系我");
-  });
+socialLinks.forEach((link) => {
+  $(link.id).hover(
+    function () {
+      $("#link-text").html(link.text);
+    },
+    function () {
+      $("#link-text").html("通过这里联系我");
+    }
+  );
+});
 
 //自动变灰
 let myDate = new Date();
