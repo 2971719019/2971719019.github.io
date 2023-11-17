@@ -80,35 +80,9 @@
     <section id="section" class="section">
           <!-- 背景图片 -->
           <div class="bg-all">
-            <img id="bg" src="img\background1.webp" onerror="this.classList.add('error');" style="display: none;">
+            <img id="bg" onerror="this.classList.add('error');"></img>
             <div class="cover"></div>
-          </div>
-          
-          <script>
-            function preloadImage(url) {
-              return new Promise((resolve, reject) => {
-                const image = new Image();
-                image.onload = () => resolve(url);
-                image.onerror = () => reject(url);
-                image.src = url;
-              });
-            }
-          
-            // 获取背景图片元素
-            const bgImage = document.getElementById('bg');
-          
-            // 预加载背景图片
-            preloadImage(bgImage.src)
-              .then((url) => {
-                // 图片加载完成后，将其设置为背景图像
-                document.querySelector('.bg-all').style.backgroundImage = `url(${url})`;
-                // 显示背景图片元素
-                bgImage.style.display = 'block';
-              })
-              .catch((url) => {
-                console.error(`Failed to preload image: ${url}`);
-              });
-          </script>
+        </div>
         <!-- 鼠标指针 -->
         <div id="g-pointer-1"></div>
         <div id="g-pointer-2"></div>
